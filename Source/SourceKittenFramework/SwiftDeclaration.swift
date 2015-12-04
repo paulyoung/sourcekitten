@@ -18,7 +18,7 @@ public struct SwiftDeclaration: DeclarationType {
     public let usr: String?
     public let declaration: String?
     public let documentationComment: String?
-    public let children: [DeclarationType]
+    public let children: [AnyDeclarationType]
     public let accessibility: Accessibility?
 }
 

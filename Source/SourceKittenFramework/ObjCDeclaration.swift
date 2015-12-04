@@ -18,7 +18,7 @@ public struct ObjCDeclaration: DeclarationType {
     public let usr: String?
     public let declaration: String?
     public let documentationComment: String?
-    public let children: [DeclarationType]
+    public let children: [AnyDeclarationType]
     
     /// Returns the USR for the auto-generated getter for this property.
     ///
