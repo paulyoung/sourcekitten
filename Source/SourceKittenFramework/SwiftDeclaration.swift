@@ -18,7 +18,7 @@ public struct SwiftDeclaration: DeclarationType {
     public let usr: String?
     public let declaration: String?
     public let documentationComment: String?
-    public let children: [DeclarationType]
+    public let children: [AnyDeclarationType]
     public let accessibility: Accessibility?
 }
 
@@ -51,25 +51,4 @@ extension SwiftDeclaration {
         children = SwiftDocKey.getSubstructure(dictionary) // FIXME: Cannot assign value of type 'XPCArray?' to type '[DeclarationType]'
         accessibility = // FIXME: Accessibility(rawValue: ...)
     }
-}
-
-// MARK: Hashable
-
-extension SwiftDeclaration: Hashable  {
-    public var hashValue: Int {
-        return usr?.hashValue ?? 0
-    }
-}
-
-public func ==(lhs: SwiftDeclaration, rhs: SwiftDeclaration) -> Bool {
-    return lhs.usr == rhs.usr &&
-        lhs.location == rhs.location
-}
-
-// MARK: Comparable
-
-/// A [strict total order](http://en.wikipedia.org/wiki/Total_order#Strict_total_order)
-/// over instances of `Self`.
-public func <(lhs: SwiftDeclaration, rhs: SwiftDeclaration) -> Bool {
-    return lhs.location < rhs.location
 }
