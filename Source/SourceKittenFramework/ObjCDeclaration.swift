@@ -87,24 +87,3 @@ extension SequenceType where Generator.Element == ObjCDeclaration {
         return filter { !propertyGetterSetterUSRs.contains($0.usr!) }
     }
 }
-
-// MARK: Hashable
-
-extension ObjCDeclaration: Hashable  {
-    public var hashValue: Int {
-        return usr?.hashValue ?? 0
-    }
-}
-
-public func ==(lhs: ObjCDeclaration, rhs: ObjCDeclaration) -> Bool {
-    return lhs.usr == rhs.usr &&
-        lhs.location == rhs.location
-}
-
-// MARK: Comparable
-
-/// A [strict total order](http://en.wikipedia.org/wiki/Total_order#Strict_total_order)
-/// over instances of `Self`.
-public func <(lhs: ObjCDeclaration, rhs: ObjCDeclaration) -> Bool {
-    return lhs.location < rhs.location
-}
